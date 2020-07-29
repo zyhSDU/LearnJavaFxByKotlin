@@ -4,7 +4,6 @@ import fx.javafxFactory.ButtonFactory
 import fx.javafxFactory.SceneFactory
 import fx.res.PairDoubleEnum
 import javafx.application.Application
-import javafx.event.EventHandler
 import javafx.scene.Group
 import javafx.stage.Stage
 
@@ -16,16 +15,11 @@ import javafx.stage.Stage
  */
 class Main6 : Application() {
     override fun start(primaryStage: Stage) {
-        val button = ButtonFactory.button("111", EventHandler {
-
-        })
+        val button = ButtonFactory.buttonEnum1("111")
         val group = Group().apply {
             children.add(button)
         }
         val scene = SceneFactory.scene(group, PairDoubleEnum.w400h400)
-
-
-
 
         primaryStage.scene = scene
         primaryStage.show()
