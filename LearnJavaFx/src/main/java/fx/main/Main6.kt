@@ -15,7 +15,7 @@ import javafx.stage.Stage
  */
 class Main6 : Application() {
     override fun start(primaryStage: Stage) {
-        val button = ButtonFactory.buttonEnum1("111")
+        val button = ButtonFactory.buttonEnum2("111")
         val group = Group().apply {
             children.add(button)
         }
