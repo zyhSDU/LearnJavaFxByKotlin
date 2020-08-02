@@ -84,6 +84,18 @@ object ButtonFactory {
                     }
                 }
             }
+            onMousePressed= EventHandler {
+                println("onMousePressed")
+            }
+            onMouseReleased= EventHandler {
+                println("onMouseReleased")
+            }
+            onKeyPressed= EventHandler {
+                println("${it.code.name}==onKeyPressed")
+            }
+            onKeyReleased= EventHandler {
+                println("${it.code.name}==onKeyReleased")
+            }
         }
     }
 }

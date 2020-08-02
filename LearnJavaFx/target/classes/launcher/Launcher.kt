@@ -21,7 +21,8 @@ class Launcher {
 //            Application.launch(Main3::class.java)
 //            Application.launch(Main4::class.java)
 //            Application.launch(Main5Platform::class.java)
-            Application.launch(Main6::class.java)
+//            Application.launch(Main6::class.java)
+            Application.launch(Main8::class.java)
         }
     }
 }
