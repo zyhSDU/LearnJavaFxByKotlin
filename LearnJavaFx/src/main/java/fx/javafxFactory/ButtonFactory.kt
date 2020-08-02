@@ -7,6 +7,7 @@ import javafx.event.ActionEvent
 import javafx.event.EventHandler
 import javafx.geometry.Insets
 import javafx.scene.control.Button
+import javafx.scene.input.MouseButton
 import javafx.scene.input.MouseEvent
 import javafx.scene.layout.*
 import javafx.scene.paint.Paint
@@ -30,7 +31,6 @@ object ButtonFactory {
 
     fun buttonEnum1(text: String = "", application: Application? = null): Button {
         return button(text).apply {
-            setLayoutXY(PairDoubleEnum.x0y0)
             layoutX = 10.0
             layoutY = 10.0
             font = Font.font("sans-serif", 40.0)
@@ -53,5 +53,37 @@ object ButtonFactory {
             val button = it.source as Button
             println("所点击按钮的文本是${button.text}")
         })
+    }
+
+    fun buttonEnum3(text: String = ""): Button {
+        return button(text).apply {
+            addEventHandler(MouseEvent.MOUSE_CLICKED) {
+                println("当前鼠标按键=${it.button.name}")
+                when (it.button.name) {
+                    MouseButton.PRIMARY.name -> {
+                        when (it.clickCount) {
+                            1 -> {
+                                println("单击")
+                            }
+                            2 -> {
+                                println("双击")
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    fun buttonEnum4(text: String = ""): Button {
+        return button(text).apply {
+            addEventHandler(MouseEvent.MOUSE_CLICKED) {
+                println(it.button.name)
+                when (it.clickCount) {
+                    1 -> {
+                    }
+                }
+            }
+        }
     }
 }
