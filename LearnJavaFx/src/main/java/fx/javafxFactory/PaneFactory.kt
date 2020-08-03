@@ -1,5 +1,9 @@
 package fx.javafxFactory
 
-object PaneFactory{
+import javafx.scene.Group
 
+object PaneFactory {
+    fun group(): Group {
+        return Group()
+    }
 }
