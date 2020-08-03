@@ -30,10 +30,15 @@ class Main8 : Application() {
 //            println(contains(10.0, 10.0))
         }
 
-        primaryStage.scene = SceneFactory.scene(group, PairDoubleEnum.w800h800).apply {
+        primaryStage.scene = SceneFactory.sceneEnum1(group, PairDoubleEnum.w800h800,runnable = Runnable {
+            button1.onAction.handle(null)
+        }).apply {
             onMouseClicked = EventHandler {
+                println(it::class.java)
+                println(it)
                 println("${it.x}+${it.y}")
             }
+
         }
         primaryStage.show()
     }
