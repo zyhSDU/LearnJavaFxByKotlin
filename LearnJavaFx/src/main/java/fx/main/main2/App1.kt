@@ -1,26 +1,32 @@
 package fx.main.main2
 
-import fx.javafxFactory.ControlFactory
+import fx.javafxFactory.ButtonFactory
+import fx.javafxFactory.PaneFactory
 import javafx.application.Application
-import javafx.scene.Group
+import javafx.event.EventHandler
+import javafx.geometry.Insets
 import javafx.scene.Scene
+import javafx.scene.layout.AnchorPane
 import javafx.stage.Stage
 
-/**
- * @program: LearnJavaFxByKotlin
- * @description:
- * @author: 张宇涵
- * @create: 2020-08-05 00:08
- */
 fun main() {
-    Application.launch(App1::class.java)
+    Application.launch(App2::class.java)
 }
 
-class App1 : BaseApp() {
-    override fun initStart(primaryStage: Stage, scene: Scene, group: Group) {
-        val labelEnum1 = ControlFactory.labelEnum1()
-        val textFieldEnum1 = ControlFactory.textFieldEnum1()
-        val passwordFieldEnum1 = ControlFactory.passwordFieldEnum1()
-        group.children.addAll(labelEnum1, textFieldEnum1, passwordFieldEnum1)
+class App2 : BaseApp() {
+    override fun initStart(primaryStage: Stage, scene: Scene, anchorPane: AnchorPane) {
+        val button1 = ButtonFactory.button("b1")
+        val button2 = ButtonFactory.button("b2")
+        anchorPane.apply {
+            style="-fx-background-color:#FF6666"
+            onMouseClicked= EventHandler {
+                println("App2.initStart")
+            }
+            children.addAll(button1,button2)
+            //        AnchorPane.setTopAnchor(button1,100.0)//这个生效的优先级比layoutXY高
+            PaneFactory.setTopRightBottomLeft(button1, 0.0)///////////////////////
+            padding= Insets(10.0)
+        }
+
     }
 }

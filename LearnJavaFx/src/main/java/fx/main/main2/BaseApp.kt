@@ -1,11 +1,11 @@
 package fx.main.main2
 
-import fx.javafxFactory.PaneFactory
 import fx.javafxFactory.SceneFactory
 import fx.javafxFactory.StageFactory
 import javafx.application.Application
-import javafx.scene.Group
 import javafx.scene.Scene
+import javafx.scene.layout.AnchorPane
+import javafx.scene.layout.Pane
 import javafx.stage.Stage
 
 /**
@@ -16,15 +16,16 @@ import javafx.stage.Stage
  */
 abstract class BaseApp : Application() {
     override fun start(primaryStage: Stage) {
-        val group = PaneFactory.group()
-        val scene = SceneFactory.scene(group)
+        val pane = AnchorPane()
+
+        val scene = SceneFactory.scene(pane)
         StageFactory.stage(primaryStage, scene = scene).apply {
             width = 800.0
             height = 800.0
         }
-        initStart(primaryStage, scene, group)
+        initStart(primaryStage, scene, pane)
         primaryStage.show()
     }
 
-    protected abstract fun initStart(primaryStage: Stage, scene: Scene, group: Group)
+    protected abstract fun initStart(primaryStage: Stage, scene: Scene, anchorPane: AnchorPane)
 }

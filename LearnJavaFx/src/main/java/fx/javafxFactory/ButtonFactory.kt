@@ -1,16 +1,11 @@
 package fx.javafxFactory
 
-import fx.javafxFactory.NodeFactory.setLayoutXY
-import fx.res.PairDoubleEnum
 import javafx.application.Application
 import javafx.event.ActionEvent
 import javafx.event.EventHandler
-import javafx.geometry.Insets
 import javafx.scene.control.Button
 import javafx.scene.input.MouseButton
 import javafx.scene.input.MouseEvent
-import javafx.scene.layout.*
-import javafx.scene.paint.Paint
 import javafx.scene.text.Font
 
 object ButtonFactory {
