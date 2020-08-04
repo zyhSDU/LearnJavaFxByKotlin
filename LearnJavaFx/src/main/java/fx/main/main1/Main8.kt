@@ -1,4 +1,4 @@
-package fx.main
+package fx.main.main1
 
 import fx.javafxFactory.ButtonFactory
 import fx.javafxFactory.NodeFactory.setLayoutXY
@@ -7,7 +7,6 @@ import fx.res.PairDoubleEnum
 import javafx.application.Application
 import javafx.event.EventHandler
 import javafx.scene.Group
-import javafx.scene.text.Font
 import javafx.stage.Stage
 
 /**

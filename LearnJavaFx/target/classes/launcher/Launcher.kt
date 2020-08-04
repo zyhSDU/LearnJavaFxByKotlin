@@ -1,6 +1,6 @@
 package fx.launcher
 
-import fx.main.*
+import fx.main.main1.*
 import javafx.application.Application
 
 /**

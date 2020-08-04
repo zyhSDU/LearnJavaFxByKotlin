@@ -1,4 +1,4 @@
-package fx.main
+package fx.main.main1
 
 import fx.javafxFactory.DialogFactory
 import fx.res.PairDoubleEnum

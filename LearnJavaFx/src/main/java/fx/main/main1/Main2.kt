@@ -1,4 +1,4 @@
-package fx.main
+package fx.main.main1
 
 import javafx.application.Application
 import javafx.event.EventHandler

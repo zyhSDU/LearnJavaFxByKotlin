@@ -1,6 +1,6 @@
-import fx.main.Main6
-import fx.main.Main7Cursor
-import fx.main.Main8
+import fx.main.main1.Main6
+import fx.main.main1.Main7Cursor
+import fx.main.main1.Main8
 import javafx.application.Application
 import org.junit.Test
 

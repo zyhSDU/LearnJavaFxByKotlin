@@ -1,4 +1,4 @@
-package fx.main
+package fx.main.main1
 
 import fx.util.Util.ThreadUtil.printlnCurrentThreadName
 import javafx.application.Application
