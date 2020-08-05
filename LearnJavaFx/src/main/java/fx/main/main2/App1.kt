@@ -7,13 +7,14 @@ import javafx.event.EventHandler
 import javafx.geometry.Insets
 import javafx.scene.Scene
 import javafx.scene.layout.AnchorPane
+import javafx.scene.layout.Pane
 import javafx.stage.Stage
 
 fun main() {
-    Application.launch(App2::class.java)
+    Application.launch(App1::class.java)
 }
 
-class App2 : BaseApp() {
+class App1 : BaseApp() {
     override fun initStart(primaryStage: Stage, scene: Scene, anchorPane: AnchorPane) {
         val button1 = ButtonFactory.button("b1")
         val button2 = ButtonFactory.button("b2")
@@ -25,7 +26,13 @@ class App2 : BaseApp() {
             children.addAll(button1,button2)
             //        AnchorPane.setTopAnchor(button1,100.0)//这个生效的优先级比layoutXY高
             PaneFactory.setTopRightBottomLeft(button1, 0.0)///////////////////////
-            padding= Insets(10.0)
+            padding= Insets(10.0)//内边距
+            //
+//            button1.isManaged//是否受父容器管理
+//            button1.isVisible//是否可见//不可点击
+//            button1.opacity//透明度//可点击
+            //
+
         }
 
     }
