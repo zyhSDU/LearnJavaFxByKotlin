@@ -20,9 +20,7 @@ import javafx.stage.Stage;
  * A sample that demonstrates changing the cursor icon.
  */
 public class Main7Cursor extends Application {
-
     public Parent createContent() {
-
         TilePane tilePaneRoot = new TilePane(5, 5);
         tilePaneRoot.setMinSize(TilePane.USE_PREF_SIZE, TilePane.USE_PREF_SIZE);
         tilePaneRoot.setMaxSize(TilePane.USE_PREF_SIZE, TilePane.USE_PREF_SIZE);

@@ -20,7 +20,7 @@ import kotlin.jvm.Throws
 class Main1 : Application() {
     @Throws(Exception::class)
     override fun start(primaryStage: Stage) {
-        val root = FXMLLoader.load<Parent>(javaClass.getResource("sample.fxml"))
+        val root = FXMLLoader.load<Parent>(javaClass.getResource("sample.view"))
         primaryStage.title = "Hello World"
         primaryStage.scene = Scene(root, 300.0, 275.0)
         primaryStage.show()

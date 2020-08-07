@@ -1,6 +1,8 @@
 package fx.javafxFactory
 
+import fx.res.PairDoubleEnum
 import javafx.scene.Scene
+import javafx.stage.Modality
 import javafx.stage.Stage
 
 /**
@@ -10,11 +12,19 @@ import javafx.stage.Stage
  * @create: 2020-07-25 00:33
  */
 object StageFactory {
-    fun stage(stage: Stage = Stage(), title: String = "标题", scene: Scene): Stage {
-        stage.apply {
+    fun stage(stage: Stage = Stage(), title: String = "标题", scene: Scene,pairDoubleEnum: PairDoubleEnum=PairDoubleEnum.w800h800): Stage {
+        return stage.apply {
             this.title = title
             this.scene = scene
+            width = pairDoubleEnum.arg1
+            height = pairDoubleEnum.arg2
+        }
+    }
 
+    fun stageEnum0(stage: Stage = Stage(), title: String = "", scene: Scene): Stage {
+        return stage.apply {
+            this.title = title
+            this.scene = scene
 //            icons.add(Image("icon/1.png"))//设置最上角图标
 //            isIconified = true//设置最小化
 //            isMaximized = true//设置最大化
@@ -49,8 +59,16 @@ object StageFactory {
 //            initStyle(StageStyle.UTILITY)//右上角只有一个×
 //            initStyle(StageStyle.UNIFIED)//消除顶部条和主窗体的边界
 //            //
+//            isFullScreen = true//设置全屏，必须设置scene
 
         }
-        return stage
+    }
+
+    fun stageWindow(title: String = "标题", scene: Scene,pairDoubleEnum: PairDoubleEnum=PairDoubleEnum.w800h800,ownerStage: Stage): Stage {
+        return stage(title = title,scene = scene,pairDoubleEnum = pairDoubleEnum).apply {
+            //绑定父舞台，设置自己为弹窗样式
+            initOwner(ownerStage)
+            initModality(Modality.WINDOW_MODAL)
+        }
     }
 }

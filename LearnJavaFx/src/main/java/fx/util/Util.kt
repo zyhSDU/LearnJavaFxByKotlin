@@ -3,7 +3,6 @@ package fx.util
 import javafx.fxml.FXMLLoader
 import javafx.scene.Parent
 import java.io.IOException
-import kotlin.jvm.Throws
 
 /**
  * @program: javafxRoot
@@ -14,8 +13,12 @@ import kotlin.jvm.Throws
 object Util {
     object LoadUtil {
         @Throws(IOException::class)
-        fun loadFXMLL(name: String): Parent {
-            return FXMLLoader.load<Parent>(javaClass.classLoader.getResource(name))
+        fun <E : Parent, F> loadFXMLL(viewURL: String="view/View1.fxml"): Pair<E, F> {
+            val fxmlLoader = FXMLLoader()
+            fxmlLoader.location = javaClass.classLoader.getResource(viewURL)
+            val parent = fxmlLoader.load<E>()
+            val controller = fxmlLoader.getController<F>()
+            return Pair(parent, controller)
         }
     }
 

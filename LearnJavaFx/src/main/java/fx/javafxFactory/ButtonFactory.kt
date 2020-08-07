@@ -9,7 +9,13 @@ import javafx.scene.input.MouseEvent
 import javafx.scene.text.Font
 
 object ButtonFactory {
-    fun button(text: String = "", eventHandler: EventHandler<ActionEvent> = EventHandler { }): Button {
+    fun button(text: String = "", onAction: EventHandler<ActionEvent> = EventHandler { }): Button {
+        return Button(text).apply {
+            this.onAction = onAction
+        }
+    }
+
+    fun buttonEnum0(text: String = "", eventHandler: EventHandler<ActionEvent> = EventHandler { }): Button {
         return Button(text).apply {
 //            prefWidth
 //            prefHeight
@@ -79,16 +85,16 @@ object ButtonFactory {
                     }
                 }
             }
-            onMousePressed= EventHandler {
+            onMousePressed = EventHandler {
                 println("onMousePressed")
             }
-            onMouseReleased= EventHandler {
+            onMouseReleased = EventHandler {
                 println("onMouseReleased")
             }
-            onKeyPressed= EventHandler {
+            onKeyPressed = EventHandler {
                 println("${it.code.name}==onKeyPressed")
             }
-            onKeyReleased= EventHandler {
+            onKeyReleased = EventHandler {
                 println("${it.code.name}==onKeyReleased")
             }
         }

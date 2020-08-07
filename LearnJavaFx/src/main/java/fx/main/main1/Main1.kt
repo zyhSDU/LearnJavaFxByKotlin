@@ -1,12 +1,12 @@
 package fx.main.main1
 
 import fx.javafxFactory.ButtonFactory
-import fx.res.PairDoubleEnum
+import fx.javafxFactory.PaneFactory
 import fx.javafxFactory.SceneFactory
 import fx.javafxFactory.StageFactory
+import fx.res.PairDoubleEnum
 import javafx.application.Application
 import javafx.event.EventHandler
-import javafx.scene.layout.StackPane
 import javafx.stage.Stage
 
 /**
@@ -15,22 +15,22 @@ import javafx.stage.Stage
  * @author: 张宇涵
  * @create: 2020-07-19 21:38
  */
+fun main() {
+    Application.launch(Main1::class.java)
+}
+
 class Main1 : Application() {
     override fun start(primaryStage: Stage) {
         val button = ButtonFactory.button("hello", EventHandler {
-            println("点击了按钮hello")
+            println("点击了按钮hello")//虽然button在场景里，但是点击button时，场景不算被点击到
         })
-
-        val stackPane = StackPane().apply {
+        val stackPane = PaneFactory.stackPane().apply {
             children.add(button)
         }
-
-        val scene = SceneFactory.scene(stackPane, PairDoubleEnum.w200h200).apply {
-            onMouseClicked = EventHandler {
-                println("你点击了场景")
-            }
-        }
-
-        StageFactory.stage(primaryStage, "标题", scene).show()
+        val scene = SceneFactory.scene(stackPane, PairDoubleEnum.w200h200, EventHandler {
+            println("你点击了场景")
+        })
+        //stage
+        StageFactory.stage(primaryStage, scene = scene).show()
     }
 }

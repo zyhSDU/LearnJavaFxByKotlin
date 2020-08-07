@@ -1,7 +1,8 @@
 package fx.javafxFactory
 
 import fx.res.PairDoubleEnum
-import javafx.event.Event
+import fx.util.Util
+import javafx.event.EventHandler
 import javafx.scene.Parent
 import javafx.scene.Scene
 import javafx.scene.input.KeyCode
@@ -16,7 +17,13 @@ import javafx.scene.input.MouseEvent
  * @create: 2020-07-19 22:00
  */
 object SceneFactory {
-    fun scene(root: Parent, d: PairDoubleEnum = PairDoubleEnum.w800h800): Scene {
+    fun scene(root: Parent, d: PairDoubleEnum = PairDoubleEnum.w800h800, onMouseClicked: EventHandler<MouseEvent> = EventHandler { }): Scene {
+        return Scene(root, d.arg1, d.arg2).apply {
+            this.onMouseClicked = onMouseClicked
+        }
+    }
+
+    fun sceneEnum0(root: Parent, d: PairDoubleEnum = PairDoubleEnum.w800h800): Scene {
         return Scene(root, d.arg1, d.arg2).apply {
 //            cursor= Cursor.CLOSED_HAND//光标变成一只手
 //            cursor= Cursor.MOVE//光标变成一个四向标志
@@ -25,7 +32,7 @@ object SceneFactory {
         }
     }
 
-    fun sceneEnum1(root: Parent, d: PairDoubleEnum = PairDoubleEnum.w800h800, runnable: Runnable = Runnable {
+    fun sceneEnum2(root: Parent, d: PairDoubleEnum = PairDoubleEnum.w800h800, runnable: Runnable = Runnable {
         println("SceneFactory.sceneEnum1")
     }): Scene {
         return Scene(root, d.arg1, d.arg2).apply {

@@ -1,4 +1,4 @@
-package fx.view
+package fx.controller
 
 import javafx.fxml.FXML
 import javafx.scene.control.Label
@@ -9,11 +9,11 @@ import javafx.scene.control.Label
  * @author: 张宇涵
  * @create: 2020-07-19 23:18
  */
-class View1 {
+class Controller1 {
     @FXML
     lateinit var label: Label
 
-    fun showLabel() {
-        label.text = "hh"
+    fun changeLabelVisible() {
+        label.isVisible = !label.isVisible
     }
 }

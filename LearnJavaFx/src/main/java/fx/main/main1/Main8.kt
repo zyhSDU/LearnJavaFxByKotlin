@@ -29,7 +29,7 @@ class Main8 : Application() {
 //            println(contains(10.0, 10.0))
         }
 
-        primaryStage.scene = SceneFactory.sceneEnum1(group, PairDoubleEnum.w800h800,runnable = Runnable {
+        primaryStage.scene = SceneFactory.sceneEnum2(group, PairDoubleEnum.w800h800,runnable = Runnable {
             button1.onAction.handle(null)
         }).apply {
             onMouseClicked = EventHandler {

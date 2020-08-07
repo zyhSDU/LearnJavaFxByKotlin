@@ -1,12 +1,8 @@
 package fx.main.main1
 
-import fx.javafxFactory.DialogFactory
-import fx.res.PairDoubleEnum
-import fx.javafxFactory.SceneFactory
+import fx.javafxFactory.*
 import javafx.application.Application
 import javafx.event.EventHandler
-import javafx.scene.control.Button
-import javafx.scene.layout.StackPane
 import javafx.stage.Stage
 
 /**
@@ -15,40 +11,33 @@ import javafx.stage.Stage
  * @author: 张宇涵
  * @create: 2020-07-19 21:38
  */
+fun main() {
+    Application.launch(Main3::class.java)
+}
+
+//it.consume()//取消原有事件
 class Main3 : Application() {
     override fun start(primaryStage: Stage) {
-        val button = Button("关闭窗口").apply {
-            onMouseClicked= EventHandler {
-                closeFunction(primaryStage)
+        val button = ButtonFactory.button("关闭窗口", EventHandler {
+            val b = DialogFactory.booleanDialog(primaryStage)
+            if (b) {
+                primaryStage.close()
+            } else {
+                println("no")
             }
-        }
+        })
 
-        val stackPane = StackPane().apply {
+        val stackPane = PaneFactory.stackPane().apply {
             children.add(button)
         }
 
-        val scene = SceneFactory.scene(stackPane, PairDoubleEnum.w400h400).apply {
-            onMouseClicked = EventHandler {
-                println("你点击了场景")
-            }
-        }
+        val scene = SceneFactory.scene(stackPane)
 
-        primaryStage.run {
-            this.scene = scene
-            onCloseRequest= EventHandler {
+        StageFactory.stage(primaryStage, scene = scene).apply {
+            onCloseRequest = EventHandler {
                 it.consume()//取消原有事件
-                closeFunction(this)
+                button.onAction.handle(null)
             }
-            show()
-        }
-    }
-
-    private fun closeFunction(primaryStage: Stage) {
-        val b = DialogFactory.booleanDialog(primaryStage)
-        if (b) {
-            primaryStage.close()
-        } else {
-            println("no")
-        }
+        }.show()
     }
 }

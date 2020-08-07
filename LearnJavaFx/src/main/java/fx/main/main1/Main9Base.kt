@@ -16,8 +16,8 @@ import javafx.stage.Stage
 class Main9Base : Application() {
     override fun start(primaryStage: Stage) {
         val group = PaneFactory.group()
-        val scene = SceneFactory.scene(group)
-        StageFactory.stage(primaryStage, scene = scene).apply {
+        val scene = SceneFactory.sceneEnum0(group)
+        StageFactory.stageEnum0(primaryStage, scene = scene).apply {
             width = 800.0
             height = 800.0
         }

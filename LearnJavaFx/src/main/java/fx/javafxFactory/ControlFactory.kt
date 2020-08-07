@@ -22,11 +22,11 @@ object ControlFactory {
             layoutY = 100.0
             font = Font.font(14.0)
             style
-            tooltip= Tooltip("tooltip").apply {
-                font= Font.font(40.0)
+            tooltip = Tooltip("tooltip").apply {
+                font = Font.font(40.0)
             }
-            promptText="请输入"
-            isFocusTraversable=false//取消焦点
+            promptText = "请输入"
+            isFocusTraversable = false//取消焦点
             textProperty().addListener { observable, oldValue, newValue ->
                 println(newValue)
             }
@@ -35,21 +35,27 @@ object ControlFactory {
             }
         }
     }
-    fun passwordFieldEnum1():PasswordField{
+
+    fun passwordFieldEnum1(): PasswordField {
         return PasswordField().apply {
             layoutX = 300.0
             layoutY = 100.0
         }
     }
-    fun labelEnum1():Label{
+
+    fun labelEnum1(): Label {
         return Label().apply {
-            text="标签"
+            text = "标签"
             layoutX = 0.0
             layoutY = 100.0
-            textFill= Paint.valueOf("red")
-            onMouseClicked= EventHandler {
+            textFill = Paint.valueOf("red")
+            onMouseClicked = EventHandler {
                 println("ControlFactory.labelEnum1")
             }
         }
+    }
+
+    fun label(text: String): Label {
+        return Label(text)
     }
 }

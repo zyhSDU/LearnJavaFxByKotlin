@@ -2,49 +2,34 @@ package fx.javafxFactory
 
 import fx.res.PairDoubleEnum
 import javafx.event.EventHandler
-import javafx.geometry.Pos
-import javafx.scene.control.Button
-import javafx.scene.control.Label
-import javafx.scene.layout.VBox
-import javafx.stage.Modality
 import javafx.stage.Stage
 
 object DialogFactory {
-    fun booleanDialog(ownerStage: Stage,title: String = "title", msg: String = "msg"): Boolean{
+    fun booleanDialog(ownerStage: Stage, title: String = "title", msg: String = "msg"): Boolean {
         var answer = false
 
-        val stage = Stage().apply {
-            //绑定父舞台，设置自己为弹窗样式
-            initOwner(ownerStage)
-            initModality(Modality.WINDOW_MODAL)
-            //
-            this.title = title
-        }
-
-        val label = Label(msg)
-        val buttonYes = Button("是").apply {
-            onMouseClicked = EventHandler {
-                answer = true
-                stage.close()
-            }
-        }
-        val buttonNo = Button("否").apply {
-            onMouseClicked = EventHandler {
-                answer = false
-                stage.close()
-            }
-        }
+        val label = ControlFactory.label(msg)
+        val buttonYes = ButtonFactory.button("是")
+        val buttonNo = ButtonFactory.button("否")
 
         // 创建布局
-        val vBox = VBox().apply {
+        val vBox = PaneFactory.vBoxEnum1().apply {
             children.addAll(label, buttonYes, buttonNo)
-            alignment = Pos.CENTER // 布局居中显示
         }
 
-        stage.apply {
-            this.scene = SceneFactory.scene(vBox, PairDoubleEnum.w200h200)
-            showAndWait()
+        val scene = SceneFactory.sceneEnum0(vBox, PairDoubleEnum.w200h200)
+
+        val stage = StageFactory.stageWindow(title = title, scene = scene,ownerStage = ownerStage).apply {
+            buttonYes.onMouseClicked = EventHandler {
+                answer = true
+                close()
+            }
+            buttonNo.onMouseClicked = EventHandler {
+                answer = false
+                close()
+            }
         }
+        stage.showAndWait()
         return answer
     }
 }
